@@ -23,8 +23,6 @@ from sslyze.plugins.http_headers_plugin import HttpHeadersScanResult
 
 
 class _MozillaCiphersAsJson(pydantic.BaseModel):
-    caddy: Set[str]
-    go: Set[str]
     iana: Set[str]
     openssl: Set[str]
 
