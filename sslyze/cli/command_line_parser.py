@@ -176,7 +176,6 @@ class CommandLineParser:
             mozilla_config_map = {
                 "modern": TlsConfigurationEnum.MOZILLA_MODERN,
                 "intermediate": TlsConfigurationEnum.MOZILLA_INTERMEDIATE,
-                "old": TlsConfigurationEnum.MOZILLA_OLD,
                 "disable": None,  # Disable the Mozilla TLS configuration check
             }
             try:

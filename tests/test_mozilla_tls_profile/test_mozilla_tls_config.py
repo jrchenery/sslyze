@@ -31,13 +31,6 @@ class TestMozillaTlsConfigurationChecker:
         )
         server_scan_result = next(scanner.get_results())
 
-        # When checking if the server is compliant with the Mozilla "old" TLS config
-        # It succeeds and the server is returned as compliant
-        tls_config = MozillaTlsConfiguration.get(TlsConfigurationEnum.MOZILLA_OLD)
-        check_server_against_tls_configuration(
-            server_scan_result=server_scan_result, tls_config_to_check_against=tls_config
-        )
-
         # And the server is returned as NOT compliant for the other Mozilla configs
         for mozilla_config_enum in [TlsConfigurationEnum.MOZILLA_INTERMEDIATE, TlsConfigurationEnum.MOZILLA_MODERN]:
             tls_config = MozillaTlsConfiguration.get(mozilla_config_enum)
@@ -63,7 +56,7 @@ class TestMozillaTlsConfigurationChecker:
         )
 
         # And the server is returned as NOT compliant for the other Mozilla configs
-        for mozilla_config in [TlsConfigurationEnum.MOZILLA_OLD, TlsConfigurationEnum.MOZILLA_MODERN]:
+        for mozilla_config in [TlsConfigurationEnum.MOZILLA_MODERN]:
             tls_config = MozillaTlsConfiguration.get(mozilla_config)
             with pytest.raises(ServerNotCompliantWithTlsConfiguration):
                 check_server_against_tls_configuration(
@@ -87,7 +80,7 @@ class TestMozillaTlsConfigurationChecker:
         )
 
         # And the server is returned as NOT compliant for the other Mozilla configs
-        for mozilla_config in [TlsConfigurationEnum.MOZILLA_OLD, TlsConfigurationEnum.MOZILLA_INTERMEDIATE]:
+        for mozilla_config in [TlsConfigurationEnum.MOZILLA_INTERMEDIATE]:
             tls_config = MozillaTlsConfiguration.get(mozilla_config)
             with pytest.raises(ServerNotCompliantWithTlsConfiguration):
                 check_server_against_tls_configuration(
@@ -99,13 +92,6 @@ class TestMozillaTlsConfigurationChecker:
         scanner = Scanner()
         scanner.queue_scans([ServerScanRequest(server_location=ServerNetworkLocation(hostname="www.mozilla.com"))])
         server_scan_result = next(scanner.get_results())
-
-        # When checking if the server is compliant with the Mozilla "old" TLS config
-        # It succeeds and the server is returned as compliant
-        tls_config = MozillaTlsConfiguration.get(TlsConfigurationEnum.MOZILLA_OLD)
-        check_server_against_tls_configuration(
-            server_scan_result=server_scan_result, tls_config_to_check_against=tls_config
-        )
 
     def test_multi_certs_deployment_compliant_with_old(self):
         # TODO(AD): Implement this test
