@@ -125,7 +125,7 @@ SCAN_COMMANDS_NEEDED_BY_MOZILLA_CHECKER: Set[ScanCommand] = {
 
 
 class MozillaTlsConfiguration:
-    _JSON_PROFILE_PATH = Path(__file__).parent.absolute() / "5.7.json"
+    _JSON_PROFILE_PATH = Path(__file__).parent.absolute() / "6.0.json"
 
     @classmethod
     def get(cls, tls_configuration_enum: TlsConfigurationEnum) -> TlsConfigurationAsJson:
