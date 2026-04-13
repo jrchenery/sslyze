@@ -83,7 +83,7 @@ class _MozillaTlsProfileAsJson(pydantic.BaseModel):
 class TlsConfigurationEnum(str, Enum):
     MOZILLA_MODERN = "modern"
     MOZILLA_INTERMEDIATE = "intermediate"
-    MOZILLA_OLD = "old"
+    #MOZILLA_OLD = "old"
     CUSTOM = "custom"
 
 
