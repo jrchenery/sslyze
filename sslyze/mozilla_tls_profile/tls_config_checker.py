@@ -69,7 +69,6 @@ class TlsConfigurationAsJson(pydantic.BaseModel):
 class _AllMozillaTlsConfigurationsAsJson(pydantic.BaseModel):
     modern: TlsConfigurationAsJson
     intermediate: TlsConfigurationAsJson
-    old: TlsConfigurationAsJson
 
 
 class _MozillaTlsProfileAsJson(pydantic.BaseModel):
